@@ -38,13 +38,46 @@ struct persons personality[10] =
 
 
 void calculation (void);
+void order (void);
+
+void order (void)
+{
+    int i, j;
+    for(i=0; i<10;i++)
+    {
+        for(j=i; j<10;j++)
+        {
+            if(personality[i].birth.year<personality[j].birth.year){
+                personality[10] = personality[i];
+                personality[i] = personality[j];
+                personality[j] = personality[10];
+            }
+        }
+    }
+}
+
+
+void calculation (void)
+{
+    order();
+    int avg, total, sum = 0;
+    for(int i = 0; i<9;i++)
+    {
+        sum += personality[i].birth.year - personality[i+1].birth.year;
+    }
+    avg = sum/10;
+    total = personality[0].birth.year+avg;
+    printf("Personalidade zero %d\n", personality[0].birth.year);
+    printf("A proxima personalidade vai nascer no ano de: %d\n", total);
+
+}
 
 
 
 int main ()
 {
 
-    printf("Hello World");   
+    calculation();
     return 0;
     
 }
