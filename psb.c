@@ -60,7 +60,7 @@ void order (void)
         //printf("Personalidade %d %d\n", i, personality[i].birth.year);
         for(j=i; j<10;j++)
         {
-            if(personality[i].birth.year>personality[j].birth.year){
+            if(personality[i].birth.year<personality[j].birth.year){
                 personality[10] = personality[i];
                 personality[i] = personality[j];
                 personality[j] = personality[10];
@@ -74,7 +74,7 @@ void calculation (void)
 {
     order();
     int avg, total, sum = 0;
-    for(int i = 0; i<11;i++)
+    for(int i = 0; i<=9;i++)
     {
         printf("Personalidade %d %d\n", i, personality[i].birth.year);
         sum += personality[i].birth.year - personality[i+1].birth.year;
